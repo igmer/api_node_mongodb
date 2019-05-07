@@ -20,6 +20,8 @@ router.route('/contacts/:contact_id')
     .patch(contactController.update)
     .put(contactController.update)
     .delete(contactController.delete);
+    router.route('/inicio')
+    .get(contactController.inicio);
 
 
 // Export API routes

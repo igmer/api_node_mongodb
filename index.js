@@ -10,9 +10,12 @@ let app = express();
 let apiRoutes = require("./api_routes")
 // Configure bodyparser to handle post requests
 app.use(bodyParser.urlencoded({
+    limit: '50mb',
     extended: true
 }));
-app.use(bodyParser.json());
+app.use(bodyParser.json(
+    {limit: '50mb', extended: true}
+));
 // Connect to Mongoose and set connection variable
 mongoose.connect('mongodb://localhost/resthub');
 var db = mongoose.connection;
@@ -22,6 +25,7 @@ var port = process.env.PORT || 8080;
 app.get('/', (req, res) => res.send('Hello World with Express'));
 // Use Api routes in the App
 app.use('/api', apiRoutes)
+app.use('/inicio', apiRoutes)
 // Launch app to listen to specified port
 app.listen(port, function () {
     console.log("Running RestHub on port " + port);
