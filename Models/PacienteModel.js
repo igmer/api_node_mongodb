@@ -1,103 +1,27 @@
 var mongoose = require('mongoose');
-// Setup schema
-var contactSchema = mongoose.Schema({
-    _id:{
-        type: Number
-    },
-    codigo_departamento:{
-        type: Number,
-        required: false
-    },
-    codigo_municipio:{
-        type: Number,
-        required: false
-    },
-    codigo_area:{
-        type: String,
-        required: false
-    },
-    codigo_canton:{
-        type: Number,
-        required: false
-    },
-    codigo_colonia:{
-        type: Number,
-        required: false
-    },
-    codigo_sit_vivienda:{
-        type: Number,
-        required: false
-    },
-    numerofamilia:{
-        type: Number,
-        required: false
-    },
-    codigo_zona:{
-        type: String,
-        required: false
-    },numerovivienda:{
-        type: Number,
-        required: false
-    },id_estasib:{
-        type: Number,
-        required: false
-    },codigo_religion:{
-        type: Number,
-        required: false
-    },codigo_tipofamilia:{
-        type: Number,
-        required: false
-    },codigo_puebloindigena:{
-        type: Number,
-        required: false
-    },anio:{
-        type: Number,
-        required: false
-    },
-    direccion: {
-        type: String,
-        required: false
-    },numerotelefono: {
-        type: String,
-        required: false
-    },fechaintroduccion: {
-        type: Date,
-        required: false
-    },
-    tipo_riesgofamiliar: {
-        type: Number,
-        required: false
-    },correlativo_tablet: {
-        type: Number,
-        required: false
-    },nombre_otrareligion: {
-        type: String,
-        required: false
-    },latitud_vivienda: {
-        type: String,
-        required: false
-    },longitud_vivienda: {
-        type: String,
-        required: false
-    },fecha_hora_ingreso: {
-        type: Date,
-        required: false
-    },var_fam_completa: {
-        type: Number,
-        required: false
-    },fam_completa: {
-        type: Number,
-        required: false
-    },
-    usuario_ingreso: String,
-    ficha_activa: Number,
-    create_date: {
-        type: Date,
-        default: Date.now
-    }
+// Setup schem
+var pacienteSchema = mongoose.Schema({
+    _id: { type: Number },
+    primer_nombre: { type: String, required: true },
+    segundo_nombre: { type: String,   required: false  },
+    primer_apellido: {type: String,  required: true },
+    segundo_apellido: { type: String, required: false },
+    apellido_cadada: {type: String,   required: false },
+    id_sexo:{  type: Number,  required: true },
+    fecha_nacimiento:{ type: Date, required: false},
+    id_departamento_domicilio:{ type: Number, required: false },
+    id_pais_nacimiento:{type: Number, required: false},
+    id_departamento_nacimiento:{ type: Number,  required: false },
+    id_user:{ type: Number, required: false },
+    id_nacionalidad:{type: Number, required: false},
+    fecha_registro:{ type: Number, required: false },
+    id_municipio_nacimiento:{type: Number,required: false},
+    id_doc_ide_paciente: {type: Number,required: false },
+    numero_doc_ide_paciente: {type: String, required: false},
+    
 });
 // Export Contact model
-var Contact = module.exports = mongoose.model('contact', contactSchema);
+var Paciente = module.exports = mongoose.model('paciente', pacienteSchema);
 module.exports.get = function (callback, limit) {
-    Contact.find(callback).limit(limit).sort({ _id: -1 });
+    Paciente.find(callback).limit(limit).sort({ _id: -1 });
 }

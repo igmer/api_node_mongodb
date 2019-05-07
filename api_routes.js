@@ -9,19 +9,19 @@ router.get('/', function (req, res) {
 });
 
 // Import contact controller
-var contactController = require('./contactController');
+var pacienteController = require('./Controller/PacienteController');
 
 // Contact routes
-router.route('/contacts')
-    .get(contactController.index)
-    .post(contactController.new);
-router.route('/contacts/:contact_id')
-    .get(contactController.view)
-    .patch(contactController.update)
-    .put(contactController.update)
-    .delete(contactController.delete);
+router.route('/pacientes')
+    .get(pacienteController.index)
+    .post(pacienteController.new);
+router.route('/pacientes/:contact_id')
+    .get(pacienteController.view)
+    .patch(pacienteController.update)
+    .put(pacienteController.update)
+    .delete(pacienteController.delete);
     router.route('/inicio')
-    .get(contactController.inicio);
+    .get(pacienteController.inicio);
 
 
 // Export API routes
